@@ -1,0 +1,64 @@
+# API配置
+api:
+  base_url: https://api.example.com
+  timeout: 30
+  retry:
+    max_retries: 3
+    retry_delay: 1
+
+# 环境配置
+environments:
+  dev:
+    api_base_url: https://dev-api.example.com
+    db_host: dev-db.example.com
+    db_port: 3306
+  test:
+    api_base_url: https://test-api.example.com
+    db_host: test-db.example.com
+    db_port: 3306
+  prod:
+    api_base_url: https://api.example.com
+    db_host: prod-db.example.com
+    db_port: 3306
+
+# 测试配置
+test:
+  parallel: true
+  max_workers: 4
+  rerun_failures: true
+  max_reruns: 2
+
+# 报告配置
+report:
+  allure:
+    results_dir: ./allure-results
+    report_dir: ./allure-report
+    clean_results: true
+  
+# 日志配置
+logging:
+  level: INFO
+  file: logs/test_execution.log
+  max_size: 500MB
+  backup_count: 5
+
+# 数据库配置
+database:
+  type: mysql
+  host: localhost
+  port: 3306
+  username: test_user
+  password: test_password
+  database: test_db
+
+# 邮件通知配置
+notification:
+  email:
+    enabled: true
+    smtp_server: smtp.example.com
+    smtp_port: 587
+    username: notification@example.com
+    password: email_password
+    recipients:
+      - team_lead@example.com
+      - qa_team@example.com 

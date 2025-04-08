@@ -1,0 +1,44 @@
+{   
+    "setup":{
+        "existing_user_id": "12345",
+        "steps":[
+            {
+                "name":"新建用户",
+                "request":"post",
+                "json":{
+                    "name":"zt",
+                    "tel":"18873273081"
+                },
+                "assert":{
+                    "field": "status_code",
+                    "expect": 200,
+                    "method": "eq",
+                    "message": "HTTP状态码验证"
+                },
+                "next":""
+            }
+        ]
+    },
+    "testsuit":[
+        {
+            "testcase":[
+                {
+                "name":"新建用户",
+                "request":"get",
+                "params":{
+                    "name":"zt"
+                },
+                "assert":{
+                    "field": "status_code",
+                    "expect": 200,
+                    "method": "eq",
+                    "message": "HTTP状态码验证"
+                },
+                "next":""
+            }
+            ]
+        
+    }]
+        
+    
+}

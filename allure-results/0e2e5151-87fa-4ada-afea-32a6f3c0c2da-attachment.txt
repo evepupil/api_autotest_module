@@ -1,0 +1,18 @@
+2025-04-08 16:44:53 | INFO     | Framework_Core.utils.logUtils.logger:info:35 - 开始执行测试用例: test_get_user
+2025-04-08 16:44:53 | INFO     | Framework_Core.utils.logUtils.logger:info:35 - --- 测试用例开始 ---
+2025-04-08 16:44:53 | INFO     | Framework_Core.utils.logUtils.logger:info:35 - 加载测试数据
+2025-04-08 16:44:53 | ERROR    | Framework_Core.utils.logUtils.logger:error:50 - 测试用例失败: TestSuites/module_A/test_demo.py::TestUserManagement::test_get_user
+2025-04-08 16:44:53 | ERROR    | Framework_Core.utils.logUtils.logger:error:50 - 失败原因: self = <test_demo.TestUserManagement object at 0x00000174EC9F74A0>
+api_client = <Framework_Core.utils.requestUtils.api_plugin.APIRequest object at 0x00000174EC8DE480>
+test_data = {'setup': {'existing_user_id': '12345', 'steps': [{'assert': {'expect': 200, 'field': 'status_code', 'message': 'HTTP状... 'status_code', 'message': 'HTTP状态码验证', 'method': 'eq'}, 'name': '新建用户', 'next': '', 'params': {'name': 'zt'}, ...}]}]}
+
+    @allure.title("测试获取用户信息")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_get_user(self, api_client: APIRequest, test_data: Dict):
+        """测试获取用户信息接口"""
+>       user_id = test_data["existing_user_id"]
+E       KeyError: 'existing_user_id'
+
+TestSuites\module_A\test_demo.py:65: KeyError
+2025-04-08 16:44:53 | INFO     | Framework_Core.utils.logUtils.logger:info:35 - 测试用例执行完成: test_get_user
+2025-04-08 16:44:53 | INFO     | Framework_Core.utils.logUtils.logger:info:35 - --- 测试用例结束 ---

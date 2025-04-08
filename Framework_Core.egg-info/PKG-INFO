@@ -1,0 +1,148 @@
+Metadata-Version: 2.4
+Name: Framework_Core
+Version: 0.1.0
+Summary: A pytest-based API automation testing framework with Allure reporting
+Author: Your Name
+Author-email: your.email@example.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: pytest>=7.4.0
+Requires-Dist: pytest-xdist>=3.3.1
+Requires-Dist: allure-pytest>=2.13.2
+Requires-Dist: requests>=2.31.0
+Requires-Dist: pyyaml>=6.0.1
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: jsonpath>=0.82
+Requires-Dist: loguru>=0.7.0
+Requires-Dist: pymysql>=1.1.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# 接口自动化测试框架
+
+这是一个基于pytest和allure的接口自动化测试框架，支持数据驱动和平台集成。
+
+## 特性
+
+- 基于pytest的测试用例管理
+- Allure报告集成
+- 数据驱动测试支持
+- 灵活的配置管理
+- 完整的日志记录
+- 多环境支持
+- 平台集成支持
+
+## 目录结构
+
+```
+├── Framework Core/          # 框架核心
+│   ├── core/               # 核心逻辑
+│   ├── extensions/         # 扩展模块
+│   └── utils/             # 工具包
+├── TestSuites/            # 测试套件
+├── Resources/             # 测试资源
+└── PlatformIntegration/   # 平台集成
+```
+
+## 安装
+
+1. 克隆仓库：
+```bash
+git clone <repository_url>
+```
+
+2. 安装依赖：
+```bash
+pip install -r requirements.txt
+```
+
+3. 安装Allure（如果尚未安装）：
+- Windows: `scoop install allure`
+- Mac: `brew install allure`
+- Linux: `sudo apt-get install allure`
+
+## 配置
+
+1. 在 `Resources/config/config.yaml` 中配置环境参数
+2. 在 `Resources/test_data/` 中准备测试数据
+
+## 运行测试
+
+### 运行所有测试
+```bash
+pytest --alluredir=./allure-results
+```
+
+### 运行特定模块的测试
+```bash
+pytest TestSuites/module_A --alluredir=./allure-results
+```
+
+### 生成Allure报告
+```bash
+allure serve ./allure-results
+```
+
+## 编写测试用例
+
+1. 在 `TestSuites` 目录下创建新的测试模块
+2. 使用提供的API客户端编写测试用例
+3. 使用Allure装饰器添加测试信息
+
+示例：
+```python
+@allure.feature("用户管理")
+@allure.story("创建用户")
+def test_create_user(api_client):
+    with allure.step("发送创建用户请求"):
+        response = api_client.post("/users", json_data=user_data)
+    assert response.status_code == 201
+```
+
+## 数据驱动
+
+1. 在 `Resources/test_data` 中创建数据文件
+2. 使用 `@pytest.mark.parametrize` 进行参数化测试
+
+## 平台集成
+
+1. 使用 `PlatformIntegration` 模块中的接口
+2. 配置平台相关参数
+3. 调用平台API进行集成
+
+## 最佳实践
+
+1. 保持测试用例独立性
+2. 使用合适的夹具（fixture）管理测试状态
+3. 合理组织测试数据
+4. 添加详细的测试日志
+5. 使用有意义的Allure标注
+
+## 常见问题
+
+1. 如何处理测试环境问题？
+   - 检查配置文件
+   - 验证环境连接性
+   - 查看日志文件
+
+2. 如何调试失败的测试？
+   - 使用pytest的-v选项获取详细输出
+   - 检查Allure报告中的请求/响应详情
+   - 查看日志文件
+
+## 贡献指南
+
+1. Fork 项目
+2. 创建特性分支
+3. 提交更改
+4. 推送到分支
+5. 创建Pull Request
+
+## 许可证
+
+MIT License 
